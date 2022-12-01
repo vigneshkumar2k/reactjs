@@ -24,7 +24,7 @@ const Register = () => {
             const newData = (data) => ([...data, formInputData])
             setTableData(newData);
             const emptyInput = { fullName: '', emailAddress: '', password: '' }
-            setformInputData(emptyInput)
+            setformInputData(emptyInput) 
         }
     }
     const update=()=>{
