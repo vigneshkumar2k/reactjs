@@ -1,5 +1,18 @@
 import React from "react";
-function Table({tableData}){
+function Table({tableData,setTableData,setformInputData,setShow,setEdit}){
+    
+    const deleteData=(index)=>{
+        console.log(index);
+        const newtable=tableData.filter(e=>index)
+        newtable.splice (index,1)
+        setTableData(newtable)
+    }
+    const editData=(index)=>{
+        setformInputData(tableData[index]);
+        setShow(true);
+        setEdit(index);
+    }
+    
     return(
         <table className="table">
             <thead>
@@ -8,6 +21,7 @@ function Table({tableData}){
                     <th>Full Name</th>
                     <th>Email Address</th>
                     <th>password</th>
+                    <th>action</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,6 +33,8 @@ function Table({tableData}){
                             <td>{data.fullName}</td>
                             <td>{data.emailAddress}</td>
                             <td>{data.password}</td>
+                            <td><button onClick={()=>{editData(index)}}>edit</button></td>
+                            <td><button onClick={()=>{deleteData(e=>index)}}>delete</button></td>
                         </tr>
                     )
                 })
